@@ -54,7 +54,7 @@ Exemple d’installation :
 
 pip install torch diffusers transformers accelerate pillow
 Lancer l’application
-python script.py
+python ziboum3.py
 
 Puis :
 
