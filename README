@@ -1,0 +1,75 @@
+ZImage Character Studio (Tkinter)
+
+Petit outil local (Python + Tkinter) pour générer un personnage cohérent (“consistent character”) avec Z-Image-Turbo via diffusers, en pilotant facilement :
+
+Turnaround : Face / Profil / Dos
+
+Émotions : neutre, joyeux, surpris, triste, colère, peur, malicieux, fatigué
+
+Actions / poses : statique, courir, sauter, dormir, lire, pointer, tenir un objet
+
+Décors : studio (fond gris), village, forêt, chambre, école
+
+Paramètres : seed, steps, guidance, largeur/hauteur, batch
+
+Le programme enregistre automatiquement les images dans un dossier de sortie avec un nom incrémenté (ex: milo_0001.png, milo_0002.png, …) et affiche un aperçu de la dernière génération.
+
+Fonctionnalités VRAM (NVIDIA / CUDA)
+
+Pour éviter les plantages quand on enchaîne plusieurs séries, l’app inclut :
+
+Purge VRAM (bouton)
+
+Nettoyage automatique (après chaque image : empty_cache, ipc_collect, gc.collect)
+
+Moniteur VRAM avec :
+
+affichage en % + GB
+
+barre de progression
+
+mode reserved (cache PyTorch) ou allocated (tensors)
+
+rafraîchissement automatique toutes les 10 secondes
+
+Prérequis
+
+Python 3.10+ recommandé
+
+CUDA + PyTorch compatible GPU (si génération sur GPU)
+
+Packages :
+
+torch
+
+diffusers
+
+transformers (souvent requis par diffusers)
+
+accelerate (souvent recommandé)
+
+Pillow
+
+Exemple d’installation :
+
+pip install torch diffusers transformers accelerate pillow
+Lancer l’application
+python script.py
+
+Puis :
+
+Charger modèle
+
+Choisir turnaround / émotion / action / décor
+
+Régler seed / steps / guidance / résolution / batch
+
+Générer
+
+Les images sont créées dans le dossier défini dans “Dossier sortie” (par défaut ./outputs).
+
+Notes
+
+Le style “studio fond gris” n’est pas imposé dans l’ADN du personnage : les décors (forêt, village…) ont des prompts plus directifs pour être réellement visibles.
+
+Si la VRAM monte trop haut, utiliser Purge VRAM, réduire la résolution, réduire le batch, ou baisser steps.
